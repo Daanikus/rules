@@ -6,7 +6,7 @@ funcs:
         return (x + 1) === y;
       }
 rules:
-  - name:  Initialize instance using composite literal
+  - name:  initialize-using-composite-literal
     actions:
       codelingo/docs:
         title: Initialize instance using composite literal
