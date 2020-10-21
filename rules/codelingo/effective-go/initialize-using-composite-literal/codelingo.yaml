@@ -1,5 +1,5 @@
 funcs:
-  - name: isOneMore
+  - name: isDirectSibling
     type: asserter
     body: |
       function(x, y) {
@@ -50,8 +50,8 @@ rules:
       codelingo/review:
         comment: Initialize `{{varName}}` using a composite literal to simplify the code. [as specified in Effective Go](https://golang.org/doc/effective_go.html#composite_literals)
     query: |
-      
       import codelingo/ast/go
+
       go.block_stmt(depth = any):
         go.list:
           go.assign_stmt:
@@ -64,7 +64,7 @@ rules:
           go.assign_stmt:
             tok == "="
             sibling_order as so2
-            isOneMore(so1, so2)
+            isDirectSibling(so1, so2)
             go.lhs:
               go.selector_expr:
                 go.ident
